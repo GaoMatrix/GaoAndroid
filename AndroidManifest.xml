@@ -8,10 +8,13 @@
         android:targetSdkVersion="21" />
 
     <application
+        android:name="com.gao.android"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <uses-library android:name="android.test.runner" />
+
         <activity android:name=".activity.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,5 +23,10 @@
             </intent-filter>
         </activity>
     </application>
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.gao.ormlite" >
+    </instrumentation>
 
 </manifest>
