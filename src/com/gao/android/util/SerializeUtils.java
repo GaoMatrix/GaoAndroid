@@ -21,9 +21,11 @@ public class SerializeUtils {
     /**
      * Deserialization object from file.
      * 
-     * @param filePath file path
+     * @param filePath
+     *            file path
      * @return de-serialized object
-     * @throws RuntimeException if an error occurs
+     * @throws RuntimeException
+     *             if an error occurs
      */
     public static Object deserialization(String filePath) {
         ObjectInputStream in = null;
@@ -46,9 +48,12 @@ public class SerializeUtils {
     /**
      * Serialize object to file.
      * 
-     * @param filePath file path
-     * @param obj object
-     * @throws RuntimeException if an error occurs
+     * @param filePath
+     *            file path
+     * @param obj
+     *            object
+     * @throws RuntimeException
+     *             if an error occurs
      */
     public static void serialization(String filePath, Object obj) {
         ObjectOutputStream out = null;

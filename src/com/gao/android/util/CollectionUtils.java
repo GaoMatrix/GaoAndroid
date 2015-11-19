@@ -29,7 +29,8 @@ public class CollectionUtils {
      * 
      * @param <V>
      * @param c
-     * @return if collection is null or its size is 0, return true, else return false.
+     * @return if collection is null or its size is 0, return true, else return
+     *         false.
      */
     public static <V> boolean isEmpty(Collection<V> c) {
         return (c == null || c.size() == 0);
@@ -45,10 +46,12 @@ public class CollectionUtils {
      * </pre>
      * 
      * @param collection
-     * @return join collection to string, separator is {@link #DEFAULT_JOIN_SEPARATOR}. if collection is empty, return
+     * @return join collection to string, separator is
+     *         {@link #DEFAULT_JOIN_SEPARATOR}. if collection is empty, return
      *         ""
      */
     public static String join(Iterable collection) {
-        return collection == null ? "" : TextUtils.join(DEFAULT_JOIN_SEPARATOR, collection);
+        return collection == null ? "" : TextUtils.join(DEFAULT_JOIN_SEPARATOR,
+                collection);
     }
 }

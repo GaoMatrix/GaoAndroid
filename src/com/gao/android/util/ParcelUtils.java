@@ -69,7 +69,8 @@ public class ParcelUtils {
      * @param out
      * @param flags
      */
-    public static void writeHashMapStringAndString(Map<String, String> map, Parcel out, int flags) {
+    public static void writeHashMapStringAndString(Map<String, String> map,
+            Parcel out, int flags) {
         if (map != null) {
             out.writeInt(map.size());
             for (Entry<String, String> entry : map.entrySet()) {
@@ -82,7 +83,8 @@ public class ParcelUtils {
     }
 
     /**
-     * Read a HashMap from a Parcel, class of key is String, class of Value can parcelable
+     * Read a HashMap from a Parcel, class of key is String, class of Value can
+     * parcelable
      * 
      * @param <V>
      * @param in
@@ -90,7 +92,8 @@ public class ParcelUtils {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public static <V extends Parcelable> Map<String, V> readHashMapStringKey(Parcel in, ClassLoader loader) {
+    public static <V extends Parcelable> Map<String, V> readHashMapStringKey(
+            Parcel in, ClassLoader loader) {
         if (in == null) {
             return null;
         }
@@ -103,19 +106,21 @@ public class ParcelUtils {
         Map<String, V> map = new HashMap<String, V>();
         for (int i = 0; i < size; i++) {
             String key = in.readString();
-            map.put(key, (V)in.readParcelable(loader));
+            map.put(key, (V) in.readParcelable(loader));
         }
         return map;
     }
 
     /**
-     * Write a HashMap to a Parcel, class of key is String, class of Value can parcelable
+     * Write a HashMap to a Parcel, class of key is String, class of Value can
+     * parcelable
      * 
      * @param map
      * @param out
      * @param flags
      */
-    public static <V extends Parcelable> void writeHashMapStringKey(Map<String, V> map, Parcel out, int flags) {
+    public static <V extends Parcelable> void writeHashMapStringKey(
+            Map<String, V> map, Parcel out, int flags) {
         if (map != null) {
             out.writeInt(map.size());
 
@@ -137,7 +142,8 @@ public class ParcelUtils {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public static <K extends Parcelable, V extends Parcelable> Map<K, V> readHashMap(Parcel in, ClassLoader loader) {
+    public static <K extends Parcelable, V extends Parcelable> Map<K, V> readHashMap(
+            Parcel in, ClassLoader loader) {
         if (in == null) {
             return null;
         }
@@ -149,7 +155,8 @@ public class ParcelUtils {
 
         Map<K, V> map = new HashMap<K, V>();
         for (int i = 0; i < size; i++) {
-            map.put((K)in.readParcelable(loader), (V)in.readParcelable(loader));
+            map.put((K) in.readParcelable(loader),
+                    (V) in.readParcelable(loader));
         }
         return map;
     }
@@ -161,7 +168,8 @@ public class ParcelUtils {
      * @param out
      * @param flags
      */
-    public static <K extends Parcelable, V extends Parcelable> void writeHashMap(Map<K, V> map, Parcel out, int flags) {
+    public static <K extends Parcelable, V extends Parcelable> void writeHashMap(
+            Map<K, V> map, Parcel out, int flags) {
         if (map != null) {
             out.writeInt(map.size());
 

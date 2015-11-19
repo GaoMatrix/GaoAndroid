@@ -31,18 +31,24 @@ public class ToastUtils {
     }
 
     public static void show(Context context, int resId, Object... args) {
-        show(context, String.format(context.getResources().getString(resId), args), Toast.LENGTH_SHORT);
+        show(context,
+                String.format(context.getResources().getString(resId), args),
+                Toast.LENGTH_SHORT);
     }
 
     public static void show(Context context, String format, Object... args) {
         show(context, String.format(format, args), Toast.LENGTH_SHORT);
     }
 
-    public static void show(Context context, int resId, int duration, Object... args) {
-        show(context, String.format(context.getResources().getString(resId), args), duration);
+    public static void show(Context context, int resId, int duration,
+            Object... args) {
+        show(context,
+                String.format(context.getResources().getString(resId), args),
+                duration);
     }
 
-    public static void show(Context context, String format, int duration, Object... args) {
+    public static void show(Context context, String format, int duration,
+            Object... args) {
         show(context, String.format(format, args), duration);
     }
 }

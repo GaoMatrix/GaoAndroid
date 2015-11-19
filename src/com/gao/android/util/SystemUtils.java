@@ -7,7 +7,10 @@ package com.gao.android.util;
  */
 public class SystemUtils {
 
-    /** recommend default thread pool size according to system available processors, {@link #getDefaultThreadPoolSize()} **/
+    /**
+     * recommend default thread pool size according to system available
+     * processors, {@link #getDefaultThreadPoolSize()}
+     **/
     public static final int DEFAULT_THREAD_POOL_SIZE = getDefaultThreadPoolSize();
 
     private SystemUtils() {
@@ -17,7 +20,8 @@ public class SystemUtils {
     /**
      * get recommend default thread pool size
      * 
-     * @return if 2 * availableProcessors + 1 less than 8, return it, else return 8;
+     * @return if 2 * availableProcessors + 1 less than 8, return it, else
+     *         return 8;
      * @see {@link #getDefaultThreadPoolSize(int)} max is 8
      */
     public static int getDefaultThreadPoolSize() {
@@ -28,10 +32,12 @@ public class SystemUtils {
      * get recommend default thread pool size
      * 
      * @param max
-     * @return if 2 * availableProcessors + 1 less than max, return it, else return max;
+     * @return if 2 * availableProcessors + 1 less than max, return it, else
+     *         return max;
      */
     public static int getDefaultThreadPoolSize(int max) {
-        int availableProcessors = 2 * Runtime.getRuntime().availableProcessors() + 1;
+        int availableProcessors = 2 * Runtime.getRuntime()
+                .availableProcessors() + 1;
         return availableProcessors > max ? max : availableProcessors;
     }
 }

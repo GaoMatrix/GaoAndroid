@@ -31,7 +31,8 @@ import android.widget.TextView;
  * </ul>
  * <ul>
  * <strong>get other info</strong>
- * <li>{@link ViewUtils#getGridViewVerticalSpacing(GridView)} get GridView vertical spacing</li>
+ * <li>{@link ViewUtils#getGridViewVerticalSpacing(GridView)} get GridView
+ * vertical spacing</li>
  * </ul>
  * <ul>
  * <strong>set other info</strong>
@@ -56,7 +57,8 @@ public class ViewUtils {
         int height = getAbsListViewHeightBasedOnChildren(view);
         ListAdapter adapter;
         int adapterCount;
-        if (view != null && (adapter = view.getAdapter()) != null && (adapterCount = adapter.getCount()) > 0) {
+        if (view != null && (adapter = view.getAdapter()) != null
+                && (adapterCount = adapter.getCount()) > 0) {
             height += view.getDividerHeight() * (adapterCount - 1);
         }
         return height;
@@ -72,10 +74,12 @@ public class ViewUtils {
     // int height = getAbsListViewHeightBasedOnChildren(view);
     // ListAdapter adapter;
     // int adapterCount, numColumns = getGridViewNumColumns(view);
-    // if (view != null && (adapter = view.getAdapter()) != null && (adapterCount = adapter.getCount()) > 0
+    // if (view != null && (adapter = view.getAdapter()) != null &&
+    // (adapterCount = adapter.getCount()) > 0
     // && numColumns > 0) {
     // int rowCount = (int)Math.ceil(adapterCount / (double)numColumns);
-    // height = rowCount * (height / adapterCount + getGridViewVerticalSpacing(view));
+    // height = rowCount * (height / adapterCount +
+    // getGridViewVerticalSpacing(view));
     // }
     // return height;
     // }
@@ -111,7 +115,7 @@ public class ViewUtils {
     // return view.getNumColumns();
     // }
 
-    private static final String CLASS_NAME_GRID_VIEW        = "android.widget.GridView";
+    private static final String CLASS_NAME_GRID_VIEW = "android.widget.GridView";
     private static final String FIELD_NAME_VERTICAL_SPACING = "mVerticalSpacing";
 
     /**
@@ -128,12 +132,14 @@ public class ViewUtils {
             demo = Class.forName(CLASS_NAME_GRID_VIEW);
             Field field = demo.getDeclaredField(FIELD_NAME_VERTICAL_SPACING);
             field.setAccessible(true);
-            verticalSpacing = (Integer)field.get(view);
+            verticalSpacing = (Integer) field.get(view);
             return verticalSpacing;
         } catch (Exception e) {
             /**
-             * accept all exception, include ClassNotFoundException, NoSuchFieldException, InstantiationException,
-             * IllegalArgumentException, IllegalAccessException, NullPointException
+             * accept all exception, include ClassNotFoundException,
+             * NoSuchFieldException, InstantiationException,
+             * IllegalArgumentException, IllegalAccessException,
+             * NullPointException
              */
             e.printStackTrace();
         }
@@ -156,7 +162,8 @@ public class ViewUtils {
         for (int i = 0; i < adapter.getCount(); i++) {
             View item = adapter.getView(i, null, view);
             if (item instanceof ViewGroup) {
-                item.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+                item.setLayoutParams(new LayoutParams(
+                        LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
             }
             item.measure(0, 0);
             height += item.getMeasuredHeight();
@@ -181,7 +188,8 @@ public class ViewUtils {
     }
 
     // /**
-    // * set GistView height which is calculated by {@link # getGridViewHeightBasedOnChildren(GridView)}
+    // * set GistView height which is calculated by {@link #
+    // getGridViewHeightBasedOnChildren(GridView)}
     // *
     // * @param view
     // * @return
@@ -191,7 +199,8 @@ public class ViewUtils {
     // }
 
     /**
-     * set ListView height which is calculated by {@link # getListViewHeightBasedOnChildren(ListView)}
+     * set ListView height which is calculated by
+     * {@link # getListViewHeightBasedOnChildren(ListView)}
      * 
      * @param view
      * @return
@@ -201,7 +210,8 @@ public class ViewUtils {
     }
 
     /**
-     * set AbsListView height which is calculated by {@link # getAbsListViewHeightBasedOnChildren(AbsListView)}
+     * set AbsListView height which is calculated by
+     * {@link # getAbsListViewHeightBasedOnChildren(AbsListView)}
      * 
      * @param view
      * @return
@@ -216,18 +226,20 @@ public class ViewUtils {
      * @param v
      * @param listener
      */
-    public static void setSearchViewOnClickListener(View v, OnClickListener listener) {
+    public static void setSearchViewOnClickListener(View v,
+            OnClickListener listener) {
         if (v instanceof ViewGroup) {
-            ViewGroup group = (ViewGroup)v;
+            ViewGroup group = (ViewGroup) v;
             int count = group.getChildCount();
             for (int i = 0; i < count; i++) {
                 View child = group.getChildAt(i);
-                if (child instanceof LinearLayout || child instanceof RelativeLayout) {
+                if (child instanceof LinearLayout
+                        || child instanceof RelativeLayout) {
                     setSearchViewOnClickListener(child, listener);
                 }
 
                 if (child instanceof TextView) {
-                    TextView text = (TextView)child;
+                    TextView text = (TextView) child;
                     text.setFocusable(false);
                 }
                 child.setOnClickListener(listener);
@@ -239,11 +251,15 @@ public class ViewUtils {
      * get descended views from parent.
      * 
      * @param parent
-     * @param filter Type of views which will be returned.
-     * @param includeSubClass Whether returned list will include views which are subclass of filter or not.
+     * @param filter
+     *            Type of views which will be returned.
+     * @param includeSubClass
+     *            Whether returned list will include views which are subclass of
+     *            filter or not.
      * @return
      */
-    public static <T extends View> List<T> getDescendants(ViewGroup parent, Class<T> filter, boolean includeSubClass) {
+    public static <T extends View> List<T> getDescendants(ViewGroup parent,
+            Class<T> filter, boolean includeSubClass) {
         List<T> descendedViewList = new ArrayList<T>();
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
@@ -254,7 +270,8 @@ public class ViewUtils {
                 descendedViewList.add(filter.cast(child));
             }
             if (child instanceof ViewGroup) {
-                descendedViewList.addAll(getDescendants((ViewGroup)child, filter, includeSubClass));
+                descendedViewList.addAll(getDescendants((ViewGroup) child,
+                        filter, includeSubClass));
             }
         }
         return descendedViewList;

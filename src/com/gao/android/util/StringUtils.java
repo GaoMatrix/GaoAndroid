@@ -30,7 +30,8 @@ public class StringUtils {
      * </pre>
      * 
      * @param str
-     * @return if string is null or its size is 0 or it is made by space, return true, else return false.
+     * @return if string is null or its size is 0 or it is made by space, return
+     *         true, else return false.
      */
     public static boolean isBlank(String str) {
         return (str == null || str.trim().length() == 0);
@@ -46,7 +47,8 @@ public class StringUtils {
      * </pre>
      * 
      * @param str
-     * @return if string is null or its size is 0, return true, else return false.
+     * @return if string is null or its size is 0, return true, else return
+     *         false.
      */
     public static boolean isEmpty(CharSequence str) {
         return (str == null || str.length() == 0);
@@ -74,7 +76,8 @@ public class StringUtils {
      * </pre>
      * 
      * @param str
-     * @return if str is null or empty, return 0, else return {@link CharSequence#length()}.
+     * @return if str is null or empty, return 0, else return
+     *         {@link CharSequence#length()}.
      */
     public static int length(CharSequence str) {
         return str == null ? 0 : str.length();
@@ -93,7 +96,8 @@ public class StringUtils {
      * @return
      */
     public static String nullStrToEmpty(Object str) {
-        return (str == null ? "" : (str instanceof String ? (String)str : str.toString()));
+        return (str == null ? "" : (str instanceof String ? (String) str : str
+                .toString()));
     }
 
     /**
@@ -117,8 +121,10 @@ public class StringUtils {
         }
 
         char c = str.charAt(0);
-        return (!Character.isLetter(c) || Character.isUpperCase(c)) ? str : new StringBuilder(str.length())
-                .append(Character.toUpperCase(c)).append(str.substring(1)).toString();
+        return (!Character.isLetter(c) || Character.isUpperCase(c)) ? str
+                : new StringBuilder(str.length())
+                        .append(Character.toUpperCase(c))
+                        .append(str.substring(1)).toString();
     }
 
     /**
@@ -133,14 +139,16 @@ public class StringUtils {
      * 
      * @param str
      * @return
-     * @throws UnsupportedEncodingException if an error occurs
+     * @throws UnsupportedEncodingException
+     *             if an error occurs
      */
     public static String utf8Encode(String str) {
         if (!isEmpty(str) && str.getBytes().length != str.length()) {
             try {
                 return URLEncoder.encode(str, "UTF-8");
             } catch (UnsupportedEncodingException e) {
-                throw new RuntimeException("UnsupportedEncodingException occurred. ", e);
+                throw new RuntimeException(
+                        "UnsupportedEncodingException occurred. ", e);
             }
         }
         return str;
@@ -195,7 +203,8 @@ public class StringUtils {
         }
 
         String hrefReg = ".*<[\\s]*a[\\s]*.*>(.+?)<[\\s]*/a[\\s]*>.*";
-        Pattern hrefPattern = Pattern.compile(hrefReg, Pattern.CASE_INSENSITIVE);
+        Pattern hrefPattern = Pattern
+                .compile(hrefReg, Pattern.CASE_INSENSITIVE);
         Matcher hrefMatcher = hrefPattern.matcher(href);
         if (hrefMatcher.matches()) {
             return hrefMatcher.group(1);
@@ -221,7 +230,8 @@ public class StringUtils {
      * @return
      */
     public static String htmlEscapeCharsToString(String source) {
-        return StringUtils.isEmpty(source) ? source : source.replaceAll("&lt;", "<").replaceAll("&gt;", ">")
+        return StringUtils.isEmpty(source) ? source : source
+                .replaceAll("&lt;", "<").replaceAll("&gt;", ">")
                 .replaceAll("&amp;", "&").replaceAll("&quot;", "\"");
     }
 
@@ -250,7 +260,7 @@ public class StringUtils {
                 // } else if (source[i] == 12290) {
                 // source[i] = '.';
             } else if (source[i] >= 65281 && source[i] <= 65374) {
-                source[i] = (char)(source[i] - 65248);
+                source[i] = (char) (source[i] - 65248);
             } else {
                 source[i] = source[i];
             }
@@ -279,11 +289,11 @@ public class StringUtils {
         char[] source = s.toCharArray();
         for (int i = 0; i < source.length; i++) {
             if (source[i] == ' ') {
-                source[i] = (char)12288;
+                source[i] = (char) 12288;
                 // } else if (source[i] == '.') {
                 // source[i] = (char)12290;
             } else if (source[i] >= 33 && source[i] <= 126) {
-                source[i] = (char)(source[i] + 65248);
+                source[i] = (char) (source[i] + 65248);
             } else {
                 source[i] = source[i];
             }

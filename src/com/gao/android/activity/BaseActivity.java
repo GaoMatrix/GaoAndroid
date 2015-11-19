@@ -1,9 +1,9 @@
 package com.gao.android.activity;
 
-import com.gao.android.util.ActivityManagerUtils;
-
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.gao.android.util.ActivityManagerUtils;
 
 public abstract class BaseActivity extends Activity {
 

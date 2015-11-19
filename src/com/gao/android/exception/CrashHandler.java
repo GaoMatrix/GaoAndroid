@@ -12,8 +12,6 @@ import java.util.Arrays;
 import java.util.Properties;
 import java.util.TreeSet;
 
-import com.gao.android.util.LogUtils;
-
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -21,6 +19,8 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.os.Looper;
 import android.widget.Toast;
+
+import com.gao.android.util.LogUtils;
 
 /**
  * UncaughtException处理类,当程序发生Uncaught异常的时候,有该类 来接管程序,并记录 发送错误报告.. 註冊方式

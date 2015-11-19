@@ -4,10 +4,12 @@ package com.gao.android.util;
  * Array Utils
  * <ul>
  * <li>{@link #isEmpty(Object[])} is null or its length is 0</li>
- * <li>{@link #getLast(Object[], Object, Object, boolean)} get last element of the target element, before the first one
- * that match the target element front to back</li>
- * <li>{@link #getNext(Object[], Object, Object, boolean)} get next element of the target element, after the first one
- * that match the target element front to back</li>
+ * <li>{@link #getLast(Object[], Object, Object, boolean)} get last element of
+ * the target element, before the first one that match the target element front
+ * to back</li>
+ * <li>{@link #getNext(Object[], Object, Object, boolean)} get next element of
+ * the target element, after the first one that match the target element front
+ * to back</li>
  * <li>{@link #getLast(Object[], Object, boolean)}</li>
  * <li>{@link #getLast(int[], int, int, boolean)}</li>
  * <li>{@link #getLast(long[], long, long, boolean)}</li>
@@ -36,23 +38,29 @@ public class ArrayUtils {
     }
 
     /**
-     * get last element of the target element, before the first one that match the target element front to back
+     * get last element of the target element, before the first one that match
+     * the target element front to back
      * <ul>
      * <li>if array is empty, return defaultValue</li>
      * <li>if target element is not exist in array, return defaultValue</li>
-     * <li>if target element exist in array and its index is not 0, return the last element</li>
-     * <li>if target element exist in array and its index is 0, return the last one in array if isCircle is true, else
-     * return defaultValue</li>
+     * <li>if target element exist in array and its index is not 0, return the
+     * last element</li>
+     * <li>if target element exist in array and its index is 0, return the last
+     * one in array if isCircle is true, else return defaultValue</li>
      * </ul>
      * 
      * @param <V>
      * @param sourceArray
-     * @param value value of target element
-     * @param defaultValue default return value
-     * @param isCircle whether is circle
+     * @param value
+     *            value of target element
+     * @param defaultValue
+     *            default return value
+     * @param isCircle
+     *            whether is circle
      * @return
      */
-    public static <V> V getLast(V[] sourceArray, V value, V defaultValue, boolean isCircle) {
+    public static <V> V getLast(V[] sourceArray, V value, V defaultValue,
+            boolean isCircle) {
         if (isEmpty(sourceArray)) {
             return defaultValue;
         }
@@ -69,29 +77,36 @@ public class ArrayUtils {
         }
 
         if (currentPosition == 0) {
-            return isCircle ? sourceArray[sourceArray.length - 1] : defaultValue;
+            return isCircle ? sourceArray[sourceArray.length - 1]
+                    : defaultValue;
         }
         return sourceArray[currentPosition - 1];
     }
 
     /**
-     * get next element of the target element, after the first one that match the target element front to back
+     * get next element of the target element, after the first one that match
+     * the target element front to back
      * <ul>
      * <li>if array is empty, return defaultValue</li>
      * <li>if target element is not exist in array, return defaultValue</li>
-     * <li>if target element exist in array and not the last one in array, return the next element</li>
-     * <li>if target element exist in array and the last one in array, return the first one in array if isCircle is
-     * true, else return defaultValue</li>
+     * <li>if target element exist in array and not the last one in array,
+     * return the next element</li>
+     * <li>if target element exist in array and the last one in array, return
+     * the first one in array if isCircle is true, else return defaultValue</li>
      * </ul>
      * 
      * @param <V>
      * @param sourceArray
-     * @param value value of target element
-     * @param defaultValue default return value
-     * @param isCircle whether is circle
+     * @param value
+     *            value of target element
+     * @param defaultValue
+     *            default return value
+     * @param isCircle
+     *            whether is circle
      * @return
      */
-    public static <V> V getNext(V[] sourceArray, V value, V defaultValue, boolean isCircle) {
+    public static <V> V getNext(V[] sourceArray, V value, V defaultValue,
+            boolean isCircle) {
         if (isEmpty(sourceArray)) {
             return defaultValue;
         }
@@ -114,25 +129,30 @@ public class ArrayUtils {
     }
 
     /**
-     * @see {@link ArrayUtils#getLast(Object[], Object, Object, boolean)} defaultValue is null
+     * @see {@link ArrayUtils#getLast(Object[], Object, Object, boolean)}
+     *      defaultValue is null
      */
     public static <V> V getLast(V[] sourceArray, V value, boolean isCircle) {
         return getLast(sourceArray, value, null, isCircle);
     }
 
     /**
-     * @see {@link ArrayUtils#getNext(Object[], Object, Object, boolean)} defaultValue is null
+     * @see {@link ArrayUtils#getNext(Object[], Object, Object, boolean)}
+     *      defaultValue is null
      */
     public static <V> V getNext(V[] sourceArray, V value, boolean isCircle) {
         return getNext(sourceArray, value, null, isCircle);
     }
 
     /**
-     * @see {@link ArrayUtils#getLast(Object[], Object, Object, boolean)} Object is Long
+     * @see {@link ArrayUtils#getLast(Object[], Object, Object, boolean)} Object
+     *      is Long
      */
-    public static long getLast(long[] sourceArray, long value, long defaultValue, boolean isCircle) {
+    public static long getLast(long[] sourceArray, long value,
+            long defaultValue, boolean isCircle) {
         if (sourceArray.length == 0) {
-            throw new IllegalArgumentException("The length of source array must be greater than 0.");
+            throw new IllegalArgumentException(
+                    "The length of source array must be greater than 0.");
         }
 
         Long[] array = ObjectUtils.transformLongArray(sourceArray);
@@ -141,11 +161,14 @@ public class ArrayUtils {
     }
 
     /**
-     * @see {@link ArrayUtils#getNext(Object[], Object, Object, boolean)} Object is Long
+     * @see {@link ArrayUtils#getNext(Object[], Object, Object, boolean)} Object
+     *      is Long
      */
-    public static long getNext(long[] sourceArray, long value, long defaultValue, boolean isCircle) {
+    public static long getNext(long[] sourceArray, long value,
+            long defaultValue, boolean isCircle) {
         if (sourceArray.length == 0) {
-            throw new IllegalArgumentException("The length of source array must be greater than 0.");
+            throw new IllegalArgumentException(
+                    "The length of source array must be greater than 0.");
         }
 
         Long[] array = ObjectUtils.transformLongArray(sourceArray);
@@ -153,11 +176,14 @@ public class ArrayUtils {
     }
 
     /**
-     * @see {@link ArrayUtils#getLast(Object[], Object, Object, boolean)} Object is Integer
+     * @see {@link ArrayUtils#getLast(Object[], Object, Object, boolean)} Object
+     *      is Integer
      */
-    public static int getLast(int[] sourceArray, int value, int defaultValue, boolean isCircle) {
+    public static int getLast(int[] sourceArray, int value, int defaultValue,
+            boolean isCircle) {
         if (sourceArray.length == 0) {
-            throw new IllegalArgumentException("The length of source array must be greater than 0.");
+            throw new IllegalArgumentException(
+                    "The length of source array must be greater than 0.");
         }
 
         Integer[] array = ObjectUtils.transformIntArray(sourceArray);
@@ -166,11 +192,14 @@ public class ArrayUtils {
     }
 
     /**
-     * @see {@link ArrayUtils#getNext(Object[], Object, Object, boolean)} Object is Integer
+     * @see {@link ArrayUtils#getNext(Object[], Object, Object, boolean)} Object
+     *      is Integer
      */
-    public static int getNext(int[] sourceArray, int value, int defaultValue, boolean isCircle) {
+    public static int getNext(int[] sourceArray, int value, int defaultValue,
+            boolean isCircle) {
         if (sourceArray.length == 0) {
-            throw new IllegalArgumentException("The length of source array must be greater than 0.");
+            throw new IllegalArgumentException(
+                    "The length of source array must be greater than 0.");
         }
 
         Integer[] array = ObjectUtils.transformIntArray(sourceArray);

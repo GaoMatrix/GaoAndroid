@@ -30,7 +30,8 @@ public class ListUtils {
      * 
      * @param <V>
      * @param sourceList
-     * @return if list is null or empty, return 0, else return {@link List#size()}.
+     * @return if list is null or empty, return 0, else return
+     *         {@link List#size()}.
      */
     public static <V> int getSize(List<V> sourceList) {
         return sourceList == null ? 0 : sourceList.size();
@@ -68,7 +69,8 @@ public class ListUtils {
      * @param expected
      * @return
      */
-    public static <V> boolean isEquals(ArrayList<V> actual, ArrayList<V> expected) {
+    public static <V> boolean isEquals(ArrayList<V> actual,
+            ArrayList<V> expected) {
         if (actual == null) {
             return expected == null;
         }
@@ -97,7 +99,8 @@ public class ListUtils {
      * </pre>
      * 
      * @param list
-     * @return join list to string, separator is ",". if list is empty, return ""
+     * @return join list to string, separator is ",". if list is empty, return
+     *         ""
      */
     public static String join(List<String> list) {
         return join(list, DEFAULT_JOIN_SEPARATOR);
@@ -118,11 +121,12 @@ public class ListUtils {
      * @return join list to string. if list is empty, return ""
      */
     public static String join(List<String> list, char separator) {
-        return join(list, new String(new char[] {separator}));
+        return join(list, new String(new char[] { separator }));
     }
 
     /**
-     * join list to string. if separator is null, use {@link #DEFAULT_JOIN_SEPARATOR}
+     * join list to string. if separator is null, use
+     * {@link #DEFAULT_JOIN_SEPARATOR}
      * 
      * <pre>
      * join(null, "#")     =   "";
@@ -147,10 +151,12 @@ public class ListUtils {
      * @param <V>
      * @param sourceList
      * @param entry
-     * @return if entry already exist in sourceList, return false, else add it and return true.
+     * @return if entry already exist in sourceList, return false, else add it
+     *         and return true.
      */
     public static <V> boolean addDistinctEntry(List<V> sourceList, V entry) {
-        return (sourceList != null && !sourceList.contains(entry)) ? sourceList.add(entry) : false;
+        return (sourceList != null && !sourceList.contains(entry)) ? sourceList
+                .add(entry) : false;
     }
 
     /**
@@ -213,23 +219,28 @@ public class ListUtils {
      *         </ul>
      */
     public static <V> boolean addListNotNullValue(List<V> sourceList, V value) {
-        return (sourceList != null && value != null) ? sourceList.add(value) : false;
+        return (sourceList != null && value != null) ? sourceList.add(value)
+                : false;
     }
 
     /**
-     * @see {@link ArrayUtils#getLast(Object[], Object, Object, boolean)} defaultValue is null, isCircle is true
+     * @see {@link ArrayUtils#getLast(Object[], Object, Object, boolean)}
+     *      defaultValue is null, isCircle is true
      */
     @SuppressWarnings("unchecked")
     public static <V> V getLast(List<V> sourceList, V value) {
-        return (sourceList == null) ? null : (V)ArrayUtils.getLast(sourceList.toArray(), value, true);
+        return (sourceList == null) ? null : (V) ArrayUtils.getLast(
+                sourceList.toArray(), value, true);
     }
 
     /**
-     * @see {@link ArrayUtils#getNext(Object[], Object, Object, boolean)} defaultValue is null, isCircle is true
+     * @see {@link ArrayUtils#getNext(Object[], Object, Object, boolean)}
+     *      defaultValue is null, isCircle is true
      */
     @SuppressWarnings("unchecked")
     public static <V> V getNext(List<V> sourceList, V value) {
-        return (sourceList == null) ? null : (V)ArrayUtils.getNext(sourceList.toArray(), value, true);
+        return (sourceList == null) ? null : (V) ArrayUtils.getNext(
+                sourceList.toArray(), value, true);
     }
 
     /**
